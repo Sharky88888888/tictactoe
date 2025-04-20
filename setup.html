@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <form method="post" action="game">
+        <table>
+            <% for (int i = 0; i < 3; i++) { %>
+            <tr>
+                <% for (int j = 0; j < 3; j++) { %>
+                <td>
+                    <button type="submit" name="cell" value="<%= i * 3 + j %>">
+                        <%= request.getAttribute("board") != null ? ((char[])request.getAttribute("board"))[i * 3 + j] : ' ' %>
+                    </button>
+                </td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+        <input type="hidden" name="player" value="X" />
+    </form>
+</body>
+</html>
